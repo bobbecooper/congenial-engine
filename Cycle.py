@@ -9,11 +9,16 @@ class Cycle:
             build_mastery = ['Dishes', 'Shopping for Food', 'Cleaning', 'Laundry Stack', 'Open Mail',
                              'Bill Pay or Paperwork', 'Phone Calls', 'Work', 'Litterbox', 'Declutter',
                              'Deal with Email and Voicemail', 'Prayer']
-            distress_tolerance = ['Imagery', ]
-            cycle_list = [physical_health, mood_regulation, emotional_regulation, build_mastery]
+            distress_tolerance = ['Imagery', 'Do One Thing', 'Meaning', 'Comparisons', 'Tonglen', 'Touch',
+                                  'Spiritual Sense', 'Smell', 'Encouragement', 'TIP', 'Activities', 'Thoughts',
+                                  'Relaxation', 'Radical Acceptance', 'Sensations', 'Prayer']
+            distress_cycles = [distress_tolerance]
+            uncomfortable_cycles = [mood_regulation]
+            serene_cycles = [physical_health, emotional_regulation, build_mastery, ]
         else:
             print("File reading not yet implemented")
             assert False
+        position = 'empty'
 
     def update_cycle(self, user_input):
         pass
@@ -23,3 +28,6 @@ class Cycle:
 
     def print_options(self):
         print("Type 0 to quit")
+        print("1. Distress")
+        print("2. Uncomfortable Feeling")
+        print("3. Serene")
