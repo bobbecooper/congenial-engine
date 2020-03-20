@@ -1,6 +1,6 @@
 # main input loop
 
-def update_cycles(cycles, user_input):
+def update_cycle(cycles, user_input):
     pass
 
 
