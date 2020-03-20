@@ -1,3 +1,4 @@
+import random
 class Cycle:
 
     def __init__(self, filename='saved_cycle.json'):
@@ -12,22 +13,34 @@ class Cycle:
             distress_tolerance = ['Imagery', 'Do One Thing', 'Meaning', 'Comparisons', 'Tonglen', 'Touch',
                                   'Spiritual Sense', 'Smell', 'Encouragement', 'TIP', 'Activities', 'Thoughts',
                                   'Relaxation', 'Radical Acceptance', 'Sensations', 'Prayer']
-            distress_cycles = [distress_tolerance]
-            uncomfortable_cycles = [mood_regulation]
-            serene_cycles = [physical_health, emotional_regulation, build_mastery, ]
+            self.distress_cycles = [distress_tolerance]
+            self.uncomfortable_cycles = [mood_regulation]
+            # self.serene_cycles = [physical_health, emotional_regulation, build_mastery]
+            self.all_cycles = [self.distress_cycles, self.uncomfortable_cycles, ]  # self.serene_cycles]
         else:
             print("File reading not yet implemented")
             assert False
-        position = 'empty'
+        self.positions = [0, 0, 0]
+        self.initialize_positions()
+        self.current_spot = (0, 0)
+
+    def initialize_positions(self):
+        self.positions[0] = random.randint(0, len(self.distress_cycles))
+        self.positions[1] = random.randint(0, len(self.uncomfortable_cycles))
+        # self.positions[2] = [random.randint(0, len(listie)) for listie in self.serene_cycles]
 
     def update_cycle(self, user_input):
-        pass
+        self.current_spot = (
+        user_input - 1, (self.positions[user_input - 1] + 1) % len(self.all_cycles[user_input - 1]))
 
     def print_new_idea(self):
-        pass
+        print(self.current_spot[0])
+        print(self.current_spot[1])
+        print(len(self.all_cycles))
+        print(self.all_cycles[self.current_spot[0]][self.current_spot[1]])
 
     def print_options(self):
         print("Type 0 to quit")
         print("1. Distress")
         print("2. Uncomfortable Feeling")
-        print("3. Serene")
+        #print("3. Serene")
