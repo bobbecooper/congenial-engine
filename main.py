@@ -14,6 +14,7 @@ def print_options(cycles):
 
 cycles = []
 
+print("Welcome to Mom's emotional stuff")
 print("Enter a number to go somewhere; 0 to quit")
 user_input = int(input())
 
