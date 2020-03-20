@@ -1,24 +1,13 @@
+from Cycle import Cycle
+
+my_cycle = Cycle()
+
 # main input loop
-
-def update_cycles(cycles, user_input):
-    pass
-
-
-def print_new_idea(cycles):
-    pass
-
-
-def print_options(cycles):
-    pass
-
-
-cycles = []
-
-print("Enter a number to go somewhere; 0 to quit")
+my_cycle.print_options()
 user_input = int(input())
 
 while user_input != 0:
-    update_cycles(cycles, user_input)
-    print_new_idea(cycles)
-    print_options(cycles)
+    my_cycle.update_cycle(user_input)
+    my_cycle.print_new_idea()
+    my_cycle.print_options()
     user_input = int(input())
