@@ -38,14 +38,19 @@ class Cycle:
         if off_by_one in [0, 1]:
             self.current_spot = [
                 off_by_one, (self.positions[off_by_one] + 1) % len(self.all_cycles[off_by_one][0])]
-            self.positions[off_by_one] += 1 % len(self.all_cycles[off_by_one][0])
+            self.positions[off_by_one] = (self.positions[off_by_one] + 1) % len(self.all_cycles[off_by_one][0])
         else:
             self.current_spot = [2, (self.positions[2][self.serene_cycle] + 1) % len(
                 self.serene_cycles[self.serene_cycle])]
-            self.positions[2][self.serene_cycle] += 1 % len(self.serene_cycles[self.serene_cycle])
+            self.positions[2][self.serene_cycle] = (self.positions[2][self.serene_cycle] + 1) % len(
+                self.serene_cycles[self.serene_cycle])
+            self.serene_cycle = (self.serene_cycle + 1) % 3
 
     def print_new_idea(self):
-        print(self.all_cycles[self.current_spot[0]][0][self.current_spot[1]])
+        if self.current_spot[0] in [0, 1]:
+            print(self.all_cycles[self.current_spot[0]][0][self.current_spot[1]])
+        else:
+            print(self.serene_cycles[self.serene_cycle][self.positions[2][self.serene_cycle]])
 
     def print_options(self):
         print("Type 0 to quit")
