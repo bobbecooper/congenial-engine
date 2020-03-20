@@ -22,22 +22,21 @@ class Cycle:
             assert False
         self.positions = [0, 0, 0]
         self.initialize_positions()
-        self.current_spot = (0, 0)
+        self.current_spot = [0, 0]
 
     def initialize_positions(self):
-        self.positions[0] = random.randint(0, len(self.distress_cycles))
-        self.positions[1] = random.randint(0, len(self.uncomfortable_cycles))
+        self.positions[0] = random.randint(0, len(self.distress_cycles[0]))
+        self.positions[1] = random.randint(0, len(self.uncomfortable_cycles[0]))
         # self.positions[2] = [random.randint(0, len(listie)) for listie in self.serene_cycles]
 
     def update_cycle(self, user_input):
-        self.current_spot = (
-        user_input - 1, (self.positions[user_input - 1] + 1) % len(self.all_cycles[user_input - 1]))
+        off_by_one = user_input - 1
+        self.current_spot = [
+            off_by_one, (self.positions[off_by_one] + 1) % len(self.all_cycles[off_by_one][0])]
+        self.positions[off_by_one] += 1
 
     def print_new_idea(self):
-        print(self.current_spot[0])
-        print(self.current_spot[1])
-        print(len(self.all_cycles))
-        print(self.all_cycles[self.current_spot[0]][self.current_spot[1]])
+        print(self.all_cycles[self.current_spot[0]][0][self.current_spot[1]])
 
     def print_options(self):
         print("Type 0 to quit")
